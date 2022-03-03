@@ -5,10 +5,6 @@ import CreateUserValidator from 'App/Validators/CreateUserValidator'
 import UpdateUserValidator from 'App/Validators/UpdateUserValidator'
 
 export default class UsersController {
-  public async index({}: HttpContextContract) {}
-
-  public async create({}: HttpContextContract) {}
-
   public async store({ response, request }: HttpContextContract) {
     const payload = await request.validate(CreateUserValidator)
 
@@ -22,8 +18,6 @@ export default class UsersController {
 
     return response.created({ user })
   }
-
-  public async show({}: HttpContextContract) {}
 
   public async update({ request, response, bouncer }: HttpContextContract) {
     const { email, password, avatar } = await request.validate(UpdateUserValidator)
@@ -40,6 +34,4 @@ export default class UsersController {
 
     return response.ok({ user })
   }
-
-  public async destroy({}: HttpContextContract) {}
 }
